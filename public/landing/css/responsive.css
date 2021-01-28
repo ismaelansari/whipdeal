@@ -1,0 +1,338 @@
+@media (min-width: 768px) and (max-width: 1191px) {
+}
+
+@media screen and (max-width: 768px) {
+  .d-logo {
+    display: none;
+  }
+  .section-padding {
+    padding: 30px 0;
+  }
+  .submenu-wrapper .submenu ul li a { padding: 13px 20px }
+
+  .submenu-wrapper .submenu {
+    display: none;
+    background: #0f0d1b;
+    margin-top: 10px;
+  }
+  .submenu-wrapper.submenuToggle .submenu { display: block; }
+  /**header**/
+  .top-strip .left {
+    display: none;
+  }
+  header .logo-nav {
+    position: relative;
+    min-height: 70px;
+  }
+  header .toggle-menu {
+    display: inline-block;
+    transition: all 0.3s;
+  }
+  header nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(6, 4, 24, .95);
+    height: 100%;
+    z-index: 99;
+    padding: 80px 20px 20px;
+    display: none;
+  }
+  header nav ul {
+    margin: 0;
+    padding: 0;
+    display: block;
+    max-height: 75vh;
+    overflow: auto;
+  }
+  header nav ul li {
+    display: block;
+    border-bottom: 1px solid rgb(21 18 41);
+    padding: 15px 0;
+  }
+  header nav ul li a {
+    font-size: 18px;
+    padding: 0;
+    display: block;
+  }
+  header nav ul li a:hover { color: #fff }
+  li.m-hide.profile-icon {
+    display: none;
+  }
+  header .logo img {
+    width: 50px;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    z-index: 999;
+  }
+  header nav .m-logo {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 1;
+    padding: 0;
+  }
+  header nav .m-logo img {
+    width: 130px;
+  }
+  header nav a.m-logo {
+    display: inline-block;
+  }
+  
+  /***header slider***/
+  .home-slider {
+    padding-top: 70px;
+  }
+  .home-slider .txt h1 {
+    font-size: 26px;
+  }
+  .home-slider .txt h2 {
+    font-size: 16px;
+  }
+  .get-started a {
+    width: 210px;
+    height: 55px;
+  }
+  .get-started a:hover .behind {
+    width: 55px;
+  }
+  .home-slider .slick-arrow {
+    bottom: 10px;
+  }
+  .home-slider .img {
+    height: calc(100vh - 125px);
+  }
+
+  /**.heading**/
+  .heading h2 {
+    font-size: 20px;
+  }
+
+  /***expert service****/
+  .expert-service .es-box .single-es {
+    padding: 15px;
+  }
+  .expert-service .es-box .single-es i {
+    font-size: 22px;
+    margin: 0 0 15px;
+    width: 50px;
+    height: 50px;
+    padding: 13px 0;
+  }
+  .expert-service .es-box .single-es h2 {
+    font-size: 15px;
+  }
+  .expert-service .es-box .single-es p {
+    line-height: 20px;
+  }
+
+  /***our vision***/
+  .our-vision .txt {
+    margin-bottom: 15px;
+  }
+
+  /***our services***/
+  .single-service .icon img {
+    width: 50px;
+    height: 50px;
+  }
+  .single-service span {
+    font-size: 12px;
+  }
+  .single-service {
+    padding: 15px 10px;
+  }
+  .services-body .row .col-lg-3 {
+    padding: 0 5px;
+  }
+  .services-body .row {
+    margin: 0 -5px;
+  }
+  .single-service h2 {
+    font-size: 13px;
+  }
+
+  /*****footer****/
+  footer .footer {
+    padding: 30px 0;
+  }
+  footer .single-footer .logo {
+    margin: 0 0 10px;
+  }
+  footer .footer .single-footer {
+    margin: 0 0 15px;
+  }
+  footer .single-footer ul li {
+    list-style: none;
+    padding: 0 5px 5px;
+    display: inline-block;
+  }
+  footer .single-footer ul li:after {
+    content: "|";
+    padding-left: 10px;
+    color: #565656;
+  }
+  footer .single-footer ul li:last-child:after {
+    content: "";
+    padding: 0;
+  }
+  footer .single-footer h2 {
+    font-size: 14px;
+  }
+  footer .single-footer p {
+    font-size: 13px;
+  }
+  footer .single-footer.links1 ul li a:before {
+    content: "";
+    padding: 0;
+  }
+
+  /********/
+  .postive-strip .col-6 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  /**********/
+  .postive-strip .single-ps-box .icon span {
+    padding: 15px;
+  }
+  .postive-strip .single-ps-box img {
+    width: 25px;
+    height: 25px;
+  }
+  .postive-strip .single-ps-box h2 {
+    font-size: 22px;
+  }
+  .postive-strip .single-ps-box span {
+    font-size: 13px;
+  }
+
+  .address-strip .single-box {
+    text-align: left;
+  }
+
+  .address-strip .single-box.center {
+    padding: 5px 0;
+  }
+  .address-strip {
+    padding: 15px 0px;
+  }
+  .address-strip .single-box a i {
+    font-size: 15px;
+  }
+  .contact-section .img {
+    margin: 0 0 20px;
+    text-align: center;
+  }
+  .contact-section .contact-form .form-group input {
+    height: 40px;
+  }
+  .contact-section .right-form {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .contact-section .contact-form h2 {
+    display: inline-block;
+  }
+  .banner{
+    min-height: 250px;
+  }
+  .banner .text{
+    padding: 15px 0;
+  }
+  .banner .text h1{
+    font-size: 22px;
+  }
+  .banner .text h2{
+    font-size: 20px;
+  }
+  .our-vision .img{
+    margin: 15px 0;
+    text-align: center;
+  }
+  .privacy-policy{
+    padding: 110px 0 50px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+    .banner{
+        min-height: 230px;
+      }
+  footer .single-footer ul li a {
+    font-size: 13px;
+  }
+  .postive-strip .single-ps-box {
+    margin: 0 0 15px;
+  }
+  .postive-strip .col-6:nth-child(3) .single-ps-box,
+  .postive-strip .col-6:nth-child(4) .single-ps-box {
+    margin: 0;
+  }
+  .postive-strip .single-ps-box h2 {
+    font-size: 20px;
+  }
+  .postive-strip .single-ps-box img {
+    width: 22px;
+    height: 22px;
+  }
+  .postive-strip .single-ps-box .icon span {
+    padding: 12px;
+  }
+  /***our services***/
+  .single-service .icon img {
+    width: 50px;
+    height: 50px;
+  }
+  .single-service span {
+    font-size: 13px;
+  }
+  .single-service h2 {
+    font-size: 14px;
+  }
+  .expert-service .es-box {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 476px) {
+  /********/
+  .postive-strip .col-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  /**********/
+  .postive-strip .single-ps-box .icon span {
+    padding: 15px;
+  }
+  .postive-strip .single-ps-box img {
+    width: 20px;
+    height: 20px;
+  }
+  .postive-strip .single-ps-box h2 {
+    font-size: 20px;
+  }
+  .postive-strip .single-ps-box span {
+    font-size: 13px;
+  }
+  
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .single-service h2 {
+        font-size: 16px;
+    }
+    .single-service span {
+        font-size: 14px;
+    }
+    .single-service .icon img {
+        width: 65px;
+        height: 65px;
+    }
+}
