@@ -76,9 +76,8 @@ use Illuminate\Support\Facades\Session;
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-md-6 col-sm-12 col-xs-12 image-wrapper">
-                                        <div class="image-preview"><img src="{{$value->image}}" width="400"/></div>
+                                            <div class="image-preview"><img src="{{$value->image}}" width="400"/></div>
                                     </div>
 
                                     <div class="col-md-12">

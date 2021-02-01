@@ -13,9 +13,6 @@
 				</div>
 				<div class="navlink">
 					<ul>
-						<li>
-							<a class="@if((substr(strrchr(url()->current(),"/"),1)=='page')){{'active'}}@endif" href="{{route('landing.index')}}"><i class="fa fa-list-alt"></i> <span>Home</span></a>
-						</li>
 						<li class="parent">
 							<a class="@if((substr(strrchr(url()->current(),"/"),0)=='page')){{'active'}}@endif" href="javascript-void:(0)"><i class="fa fa-cubes"></i> <span>Services</span> </a>
 							<ul class="submenu">

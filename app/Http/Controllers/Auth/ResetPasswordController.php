@@ -26,7 +26,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+    protected $redirectTo = '/admin/landing/page/online/marketing';
 
     public function showResetForm(Request $request, $token = null)
     {   

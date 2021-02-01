@@ -12,27 +12,6 @@ class LandingPageController extends Controller{
         return view('admin.landingPage.index');
     }
 
-    public function homeTopSlider(){
-        $sectionData    = LandingPage::where('section','home_top_slider')->first();
-        return view('admin.landingPage.home_top_slider',compact('sectionData'));
-    }
-
-    public function specialFeature(){
-        $sectionData    = LandingPage::where('section','special_feature')->get();
-        return view('admin.landingPage.special_feature',compact('sectionData'));
-    }
-
-    public function ourVision(){
-        $sectionData    = LandingPage::where('section','our_vision')->first();
-        return view('admin.landingPage.our_vision',compact('sectionData'));
-    }
-
-    public function portfolio(){
-        $sectionData    = LandingPage::where('section','portfolio')->orderBy('id','desc')->get();
-        $section        = 'portfolio';
-        return view('admin.landingPage.portfolio',compact('sectionData','section'));
-    }
-
     public function onlineMarketing(){
         $sectionData    = LandingPage::where('section','online_ads')->orderBy('id','desc')->get();
         $section        = 'online_Ads';

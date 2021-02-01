@@ -40,7 +40,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user){
        // return $user;
         if($user->role==1){
-            return redirect('admin/dashboard');
+            return redirect('admin/landing/page/online/marketing');
         }else{
             $this->guard()->logout();
             $request->session()->invalidate();
