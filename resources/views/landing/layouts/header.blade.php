@@ -1,17 +1,12 @@
-<div class="container">
-    <div class="logo-nav clearfix">
-        <a href="{{route('index')}}" class="logo">
-            <img src="{{asset("public/landing")}}/images/logo.png" class="d-logo" alt="logo">
-            <img src="{{asset("public/landing")}}/images/m-logo.png" class="m-logo" alt="logo">
-        </a>
 
-        <button class="toggle-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <nav>
-        </nav>
+<body onload="loaderfun()">
+    <div id="loader-wrapper">
+        <div id="loader">
+            <div class="svg-wrapper">
+                <!-- <img src="images/loader1.gif"> -->
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
     </div>
-</div>

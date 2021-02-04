@@ -1,0 +1,198 @@
+@media (min-width: 768px) and (max-width: 1250px) {
+}
+
+@media (min-width: 991px) and (max-width: 1191px) {
+  header nav ul li {
+    display: inline-block;
+    padding: 8px 12px;
+  }
+  header nav ul {
+    margin: 0 -12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  header .logo-nav .logo img {
+    width: 160px;
+  }
+  header nav ul li {
+    padding: 5px 8px;
+  }
+  header nav {
+    margin: 10px 0 0;
+  }
+  .transparent-header header {
+    padding: 10px 0 5px;
+  }
+  .header-banner .col-lg-8,
+  .left-right-section .col-lg-8 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .header-banner .col-lg-4,
+  .left-right-section .col-lg-4 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .header-banner {
+    padding: 14em 0 7em;
+  }
+  .section-padding2 {
+    padding: 180px 0 60px;
+  }
+  .plans .col-md-3 {
+    -ms-flex: 0 0 30%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .plans .single-plan {
+    margin: 0 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /***header***/
+  header .toggle-menu {
+    display: block;
+  }
+  header nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    height: 100vh;
+    padding: 20px;
+    display: none;
+  }
+  .navbar-toggle header nav {
+    display: block;
+  }
+  header nav ul {
+    margin: 0;
+  }
+  header nav ul li {
+    display: block;
+    padding: 10px 0;
+  }
+  header nav ul li a {
+    color: #000;
+    font-size: 20px;
+  }
+  header nav .m-logo img {
+    width: 130px;
+  }
+  header nav ul li .login-btn button {
+    background: transparent;
+    color: #000;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    font-size: 18px;
+    box-shadow: none;
+  }
+  header nav .m-logo {
+    display: block;
+  }
+  header {
+    background: rgb(255 255 255 / 65%);
+  }
+  .header-banner {
+    padding: 8em 0 4em;
+  }
+  .header-banner .txt h1 {
+    color: #ff8024;
+  }
+  .header-banner .img-wrapper {
+    padding: 0;
+  }
+  .header-banner .txt {
+    position: unset;
+    transform: unset;
+    margin: 0 0 40px;
+  }
+  .heading h2,
+  .heading.heading2 h2 {
+    font-size: 18px;
+  }
+  .section-padding {
+    padding: 20px 0;
+  }
+  .left-right-section.color1 .img-wrapper {
+    padding: 0;
+  }
+  section.left-right-section .col-xs-12 {
+    margin: 30px 0 0;
+  }
+  footer .footer {
+    padding: 20px 0;
+  }
+  .section-padding2 {
+    padding: 100px 0 40px !important;
+  }
+  .heading.heading2 {
+    margin: 0 0 30px;
+  }
+  .same-txt h2,
+  .signup-strip .social h2 {
+    font-size: 16px;
+  }
+  .same-txt p {
+    font-size: 13px;
+  }
+  .signup-strip {
+    padding: 10px 0 0;
+  }
+  .signup-strip .social ul li {
+    padding: 4px 8px;
+  }
+  .login-signup .bg-txt {
+    display: none;
+  }
+  footer .footer .footer-links .links li {
+    display: inline-block;
+  }
+  footer .footer .footer-links .links li a {
+    font-size: 12px;
+    position: relative;
+    padding-right: 5px;
+  }
+  footer .footer .footer-links .links li h2 {
+    font-size: 14px;
+  }
+  footer .footer .footer-links .links li a:after {
+    border-right: 1px solid #ed9414;
+    content: "";
+    padding: 0 0 0 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  header nav ul li a {
+    font-size: 18px;
+  }
+  header nav .m-logo img {
+    width: 170px;
+  }
+  .login-signup .ls-form {
+    padding: 15px;
+  }
+  .login-signup .back-home {
+    padding: 10px 15px;
+  }
+  .login-signup .form-wrapper {
+    padding: 55px 15px 15px;
+  }
+  .signup-btn1 {
+    padding: 5px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+  }
+}
+@media screen and (max-width: 450px) {
+}
+@media (min-width: 576px) and (max-width: 767px) {
+}
