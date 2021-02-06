@@ -51,26 +51,26 @@ $message = $errors->first('title'); ?>
                                                 <?php unset($message);
 if (isset($messageCache)) { $message = $messageCache; }
 endif; ?>
-                                            </div>
-                                            <!-- <div class="form-group">
-                                                <label>Sub Title</label>
-                                                <input type="text" placeholder="Sub Title" class="form-control" name="sub_title" value="<?php echo e(old('sub_title') ?? $value->sub_title); ?>">
-                                                <?php if ($errors->has('link')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('link'); ?>
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong style="color: red"><?php echo e($message); ?></strong>
-                                                    </span>
-                                                <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
-                                            </div> -->
+                                            </div>                                            
                                             <div class="form-group">
                                                 <label>Description</label>
                                                 <textarea name="description" id="" rows="4" placeholder="Write here..." class="form-control" name="description"><?php echo e(old('description') ?? $value->description); ?></textarea>
                                                 <?php if ($errors->has('description')) :
 if (isset($message)) { $messageCache = $message; }
 $message = $errors->first('description'); ?>
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong style="color: red"><?php echo e($message); ?></strong>
+                                                    </span>
+                                                <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Url</label>
+                                                <input type="text" placeholder="URL" class="form-control" name="url" value="<?php echo e(old('url') ?? $value->url); ?>">
+                                                <?php if ($errors->has('url')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('url'); ?>
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong style="color: red"><?php echo e($message); ?></strong>
                                                     </span>

@@ -46,20 +46,20 @@ use Illuminate\Support\Facades\Session;
                                                         <strong style="color: red">{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-                                            </div>
-                                            <!-- <div class="form-group">
-                                                <label>Sub Title</label>
-                                                <input type="text" placeholder="Sub Title" class="form-control" name="sub_title" value="{{old('sub_title') ?? $value->sub_title }}">
-                                                @error('link')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong style="color: red">{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div> -->
+                                            </div>                                            
                                             <div class="form-group">
                                                 <label>Description</label>
                                                 <textarea name="description" id="" rows="4" placeholder="Write here..." class="form-control" name="description">{{old('description') ?? $value->description }}</textarea>
                                                 @error('description')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong style="color: red">{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Url</label>
+                                                <input type="text" placeholder="URL" class="form-control" name="url" value="{{old('url') ?? $value->url }}">
+                                                @error('url')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong style="color: red">{{ $message }}</strong>
                                                     </span>

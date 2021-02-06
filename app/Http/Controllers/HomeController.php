@@ -23,7 +23,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('landing.index');
+        $data['js'] = array('handler.js');
+        return view('landing.index',compact('data'));
     }
    
 }

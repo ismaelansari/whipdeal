@@ -23,7 +23,8 @@ class LandingPageController extends Controller{
        $rules = [
             'title'       => 'required',
             'description'        => 'required',
-            'image'           => 'required',
+            'url'               => 'required',
+            //'image'           => 'required',
         ];
         $this->validate($request,$rules);
 
