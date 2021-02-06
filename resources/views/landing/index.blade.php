@@ -17,7 +17,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <div class="form-wrapper">
                         <div class="ls-form-wrapper">
-                            <form action="login.html">
+                            <form action="#" method="post" name="registration">
                                 <div class="ls-form">
                                     <div class="logo">
                                         <a href="javascript:void(0);">
