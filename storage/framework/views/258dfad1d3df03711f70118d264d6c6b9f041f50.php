@@ -27,6 +27,17 @@
 	<script src="<?php echo e(asset('public/admin_assets')); ?>/js/buttons.html5.min.js"></script>
 	<script src="<?php echo e(asset('public/admin_assets')); ?>/js/buttons.print.min.js"></script>
 	<script src="<?php echo e(asset('public/admin_assets')); ?>/js/custom.js"></script>
+
+	<link  href="http://dev.codemeg.com/fairride/public/admin_assets/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link  href="http://dev.codemeg.com/fairride/public/admin_assets/css/buttons.dataTables.min.css" rel="stylesheet">
+	<script src="http://dev.codemeg.com/fairride/public/admin_assets/js/jquery-3.3.1.js"></script>
+	<script src="http://dev.codemeg.com/fairride/public/admin_assets/js/jquery.dataTables.min.js"></script>
+	<script src="http://dev.codemeg.com/fairride/public/admin_assets/js/dataTables.buttons.min.js"></script>
+
+	<link  href="http://dev.codemeg.com/fairride/public/admin_assets/css/sweetalert.css" rel="stylesheet">
+	<script src="http://dev.codemeg.com/fairride/public/admin_assets/js/sweetalert.min.js"></script>
+
+
 	<style type="text/css">
 		pre {
     display: none;

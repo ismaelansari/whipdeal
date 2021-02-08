@@ -44,8 +44,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 /**
  * Landing page Route's
  */
-Route::get('admin/landing/page/online/marketing', 'Admin\LandingPageController@onlineMarketing')->name('landing.onlineMarketing');
 
-Route::get('admin/landing/page/add', 'Admin\LandingPageController@create')->name('landing.create');
-Route::put('admin/landing/page/update', 'Admin\LandingPageController@update')->name('landing.update');
-Route::get('admin/landing/page/delete', 'Admin\LandingPageController@delete')->name('landing.delete');
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('admin/landing/page/online/marketing', 'Admin\LandingPageController@onlineMarketing')->name('landing.onlineMarketing');
+
+  Route::get('admin/landing/page/add', 'Admin\LandingPageController@create')->name('landing.create');
+  Route::put('admin/landing/page/update', 'Admin\LandingPageController@update')->name('landing.update');
+  Route::get('admin/landing/page/delete', 'Admin\LandingPageController@delete')->name('landing.delete');
+
+  Route::put('admin/ads/active_status_change/', 'Admin\LandingPageController@activeStatusChange');
+});

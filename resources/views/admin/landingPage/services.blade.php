@@ -6,103 +6,104 @@ use Illuminate\Support\Facades\Session;
 @extends('admin.layouts.app')
 @section('content')
 	<div class="main-body">
-		<div class="inner-body portfolio">
-			<div class="heading">
-                <h2>
-                    <span>{{ ucFirst(str_replace('_',' ',$section))}}</span>
-                    <a href="{{route('landing.create',['section'=>$section])}}">
-                        <button type="button" class="same-btn1"> Add More</button>
-                    </a>
-                </h2>
+        <div class="inner-body">
+            <div class="driver-data-table">
+                <div class="top-trip clearfix">
+                    <h2>Online Ads</h2>
+                </div>
+                <div class="data-table">
+                    <div class="table-fbutton clearfix">
+                    </div>
+                    <div class="table-responsive">
+                        <table id="laravel_datatable" class="table" >
+                            <thead>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Profile Image</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Url.</th>                                    
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $i = 0;
+                                @endphp
+                                @foreach($sectionData as $s)
+                                    <tr>
+                                        <td>{{++$i}}</td>
+                                        <td><img src="{{$s->image}}" width="50px" height="50px"></td>
+                                        <td>{{$s->title}}</td>
+                                        <td>{{$s->description}}</td>
+                                        <td width='30px'>{{$s->url}}</td>
+                                        <td>
+                                            @if($s->active_status == 1)
+                                                <label class="switch"><input type="checkbox" checked="" class="active-status-change" value="1" ads_id="{{$s->id}}"><span class="slider round"></span></label>
+                                            @else
+                                                <label class="switch"><input type="checkbox" class="active-status-change" value="0" ads_id="{{$s->id}}"><span class="slider round"></span></label>
+                                            @endif
+
+                                            <div class="btns"><a href="http://dev.codemeg.com/fairride/admin/user/show/10"><button class="eye"><i class="fa fa-eye"></i></button></a></div>
+
+                                            <div class="btns"><a href="http://dev.codemeg.com/fairride/admin/vehicle_type/edit/4"><button class="pen"><i class="fa fa-pencil"></i></button></a></div>
+
+                                            <div class="btns"><a href="http://dev.codemeg.com/fairride/admin/user/show/10"><button class="pen"><i class="fa fa-trash"></i></button></a></div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-			<div class="row">
-				<div class="col-md-12">
-					@if($message = Session::get('message'))
-					<div class="alert @if(Session::get('message')) alert-success @else alert-danger @endif">
-						<ul>
-							<li>{{ $message }}</li>
-						</ul>
-					</div>
-				@endif
-				</div>
-				@foreach($sectionData as $key => $value)
-					<!--start-->
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="add-driver clear-col portfolio-bg">
-							<form method="POST" enctype="multipart/form-data" action="{{ route('landing.update') }}">
-								@csrf
-								{{ method_field('PUT') }}
-								<input type="hidden" name="order" value="{{$value->order}}"/>
-                                <input type="hidden" name="section" value="{{$value->section}}" />
+        </div>
+    </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-12 col-xs-12">
-                                        <div class="input-form ">
-                                            <div class="form-group">
-                                                <label>Title</label>
-                                                <input type="text" placeholder="Title" class="form-control" name="title" value="{{old('title') ?? $value->title }}">
-                                                @error('title')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong style="color: red">{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>                                            
-                                            <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea name="description" id="" rows="4" placeholder="Write here..." class="form-control" name="description">{{old('description') ?? $value->description }}</textarea>
-                                                @error('description')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong style="color: red">{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Url</label>
-                                                <input type="text" placeholder="URL" class="form-control" name="url" value="{{old('url') ?? $value->url }}">
-                                                @error('url')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong style="color: red">{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Change Image</label>
-                                                <input type="file" class="form-control" name="image">
-                                                @error('image')
-                                                    <span class="invalid-feedback" role="alert">
-                                                    <strong style="color: red">{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 col-xs-12 image-wrapper">
-                                            <div class="image-preview"><img src="{{$value->image}}" width="400"/></div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="mt-3">
-                                            <button type="submit" class="same-btn1">Update</button> &nbsp;
-                                          <a href="{{route('landing.delete',['section'=>$value->section,'order'=>$value->order])}}"><button type="button" class="delete-btn"><i class="fa fa-trash"></i></button></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-							</form>
-                        </div>
-                    </div><!--end-->
-                @endforeach
-			</div>
-		</div>
-	</div>
 @endsection
 @push('js')
  <script>
-        $('input[name="image"]').change(function (event) {
-                tmppath = URL.createObjectURL(event.target.files[0]);
-                var imagePreview = '';
-                    imagePreview = '<img src="'+tmppath+'" width="400"/>';
-                    $(this).parents('.image-wrapper').find('.image-preview').html(imagePreview);
+     $('#laravel_datatable').DataTable({});
+        $('body').on('click','.active-status-change', function() {
+        var ads_id = $(this).attr("ads_id");
+        //status=$('.active-status-change').val();
+        status=$(this).closest('tr').find('.active-status-change').val();
+
+        if(status==0){
+            var success_status='Activate';
+        }else{
+            var success_status='Deactivate';
+        }
+        path='admin/ads/active_status_change/';
+
+        $.ajax({
+            "headers":{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            },
+            'type':'PUT',
+            'url' :  base_url + '/' +path,
+            'data' : {  id : ads_id, status:status },
+            'beforeSend': function() {
+
+            },
+            'success' : function(response){
+            if(response.status == 'success'){
+                swal(success_status ,response.message, 'success')
+                $('.active-status-change').val(response.data.active_status);
+                    if(status==1){
+                        $(this).closest('tr').find('.active-status-change').prop('checked', false);
+                    }else{
+                        $(this).closest('tr').find('.active-status-change').prop('checked', true);
+                    }
+                }
+            },
+            'error' :  function(errors){
+                console.log(errors);
+            },
+            'complete': function() {
+
+            }
         });
+    });
  </script>
 @endpush

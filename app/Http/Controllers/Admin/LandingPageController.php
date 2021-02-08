@@ -14,7 +14,7 @@ class LandingPageController extends Controller{
 
     public function onlineMarketing(){
         $sectionData    = LandingPage::where('section','online_ads')->orderBy('id','desc')->get();
-        $section        = 'online_Ads';
+        $section        = 'online_Ads';        
         return view('admin.landingPage.services',compact('sectionData','section'));
     }
 
@@ -83,6 +83,26 @@ class LandingPageController extends Controller{
         return redirect()->back()->with('status',true)->with('message','Deleted Successfully');
      }
 
-
+     public function activeStatusChange(Request $request){
+        $inputs                     = $request->all();
+        $status=$inputs['status'];
+        if($status=='0'){
+            $change_status='1';
+        }else{
+            $change_status='0';
+        }
+        
+        $User                       = LandingPage::find($inputs['id']);
+        $User->active_status        = $change_status;
+        if($User->update()){
+            if($status==0){
+                return ['status' => 'success' , 'message' => 'User activated successfully', 'data'=>$User];
+            }else{
+                return ['status' => 'success' , 'message' => 'User deactivated successfully', 'data'=>$User]; 
+            }
+        }else{
+           return ['status' => 'failed' , 'message' => 'Status updated failed'];   
+        }
+    }
 
 }
