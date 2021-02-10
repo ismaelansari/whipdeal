@@ -49,6 +49,8 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('admin/landing/page/online/marketing', 'Admin\LandingPageController@onlineMarketing')->name('landing.onlineMarketing');
 
   Route::get('admin/landing/page/add', 'Admin\LandingPageController@create')->name('landing.create');
+  Route::post('admin/landing/page/store', 'Admin\LandingPageController@store')->name('landing.store');
+  Route::get('admin/landing/page/edit/{id}', 'Admin\LandingPageController@edit')->name('landing.edit');
   Route::put('admin/landing/page/update', 'Admin\LandingPageController@update')->name('landing.update');
   Route::get('admin/landing/page/delete', 'Admin\LandingPageController@delete')->name('landing.delete');
 

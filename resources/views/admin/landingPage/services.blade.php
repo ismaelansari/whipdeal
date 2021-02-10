@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\Session;
         <div class="inner-body">
             <div class="driver-data-table">
                 <div class="top-trip clearfix">
-                    <h2>Online Ads</h2>
+                    <h2>
+                    <span>{{ ucFirst(str_replace('_',' ',$section))}}</span>                
+                </h2>
+                <a href="{{route('landing.create',['section'=>$section])}}">
+                        <button type="button" class="same-btn1"> Add More</button>
+                    </a>
                 </div>
                 <div class="data-table">
                     <div class="table-fbutton clearfix">
@@ -44,9 +49,9 @@ use Illuminate\Support\Facades\Session;
                                                 <label class="switch"><input type="checkbox" class="active-status-change" value="0" ads_id="{{$s->id}}"><span class="slider round"></span></label>
                                             @endif
 
-                                            <div class="btns"><a href="http://dev.codemeg.com/fairride/admin/user/show/10"><button class="eye"><i class="fa fa-eye"></i></button></a></div>
+                                            <div class="btns"><a href=""><button class="eye"><i class="fa fa-eye"></i></button></a></div>
 
-                                            <div class="btns"><a href="http://dev.codemeg.com/fairride/admin/vehicle_type/edit/4"><button class="pen"><i class="fa fa-pencil"></i></button></a></div>
+                                            <div class="btns"><a href="{{url('admin/landing/page/edit/'.encrypt($s->id))}}"><button class="pen"><i class="fa fa-pencil"></i></button></a></div>
 
                                             <div class="btns"><a href="http://dev.codemeg.com/fairride/admin/user/show/10"><button class="pen"><i class="fa fa-trash"></i></button></a></div>
                                         </td>

@@ -48,28 +48,58 @@ class LandingPageController extends Controller{
                 $fileName = str_random('10').'.'.time().'.'.$file->getClientOriginalExtension();
                 $file->move(public_path('landing/images/'), $fileName);
                 DB::table('landing_page_images')->insert([
-                    'section' => $input['section'],
-                    'order'   => $input['order'],
+                    'section' => $input['section'],                    
                     'image'   => $fileName
                 ]);
             }
         }
-       DB::table('landing_pages')->where('section',$input['section'])->where('order',$input['order'])->update($input);
+        
+       DB::table('landing_pages')->where('id',$input['id'])->update($input);
        return redirect()->back()->with('status',true)->with('message','Updated Successfully');
     }
 
-    public function create(Request $request){
-        $input = $request->all();
-        $insertData = [
-            'section' => $input['section']
+    public function store(Request $request){
+       $input = $request->all();
+       $rules = [
+            'title'       => 'required',
+            'description'        => 'required',
+            'url'               => 'required',
+            //'image'           => 'required',
         ];
-        $sectionData    = DB::table('landing_pages')->where('section',$input['section'])->orderBy('id','desc')->first();
-        if($sectionData){
-            $insertData['order'] = $sectionData->order + 1;
-        }        
-        DB::table('landing_pages')->insert($insertData);
-        return redirect()->back();
-        return redirect()->back()->with('status',true)->with('message','Inserted Successfully');
+        $this->validate($request,$rules);
+
+       unset($input['_method']);
+       unset($input['_token']);
+       unset($input['image']);
+       unset($input['images']);
+
+       /* Single Image */
+       $fileName = null;
+       if ($request->hasFile('image')) {
+          $fileName = str_random('10').'.'.time().'.'.request()->image->getClientOriginalExtension();
+          request()->image->move(public_path('landing/images/'), $fileName);
+        }
+        if($fileName){
+            $input['image']  = $fileName;
+        }
+        if($request->hasFile('images')){
+            $files = $request->file('images');
+            foreach ($files as $file) {
+                $fileName = str_random('10').'.'.time().'.'.$file->getClientOriginalExtension();
+                $file->move(public_path('landing/images/'), $fileName);
+                DB::table('landing_page_images')->insert([
+                    'section' => $input['section'],                    
+                    'image'   => $fileName
+                ]);
+            }
+        }
+       DB::table('landing_pages')->insert($input);
+       return redirect()->back()->with('status',true)->with('message','Added Successfully');
+    }
+
+    public function create(Request $request){
+        $section        = 'online_Ads';
+        return view('admin.landingPage.add',compact('section'));
      }
 
 
@@ -103,6 +133,13 @@ class LandingPageController extends Controller{
         }else{
            return ['status' => 'failed' , 'message' => 'Status updated failed'];   
         }
+    }
+
+    public function edit(Request $request){
+        $id                     = decrypt($request->id);
+        $landing = LandingPage::where('id',$id)->first();
+        $section        = 'online_edit_Ads';
+        return view('admin.landingPage.edit',compact('landing', 'section'));
     }
 
 }
