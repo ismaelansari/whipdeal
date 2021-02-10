@@ -53,7 +53,7 @@ class LandingPageController extends Controller{
                 ]);
             }
         }
-        
+        $input['is_internal_post'] =  $request->is_internal_post?'1':'0';
        DB::table('landing_pages')->where('id',$input['id'])->update($input);
        return redirect()->back()->with('status',true)->with('message','Updated Successfully');
     }
@@ -67,7 +67,6 @@ class LandingPageController extends Controller{
             //'image'           => 'required',
         ];
         $this->validate($request,$rules);
-
        unset($input['_method']);
        unset($input['_token']);
        unset($input['image']);
@@ -93,6 +92,7 @@ class LandingPageController extends Controller{
                 ]);
             }
         }
+        $input['is_internal_post'] =  $request->is_internal_post?'1':'0';
        DB::table('landing_pages')->insert($input);
        return redirect()->back()->with('status',true)->with('message','Added Successfully');
     }

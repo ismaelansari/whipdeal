@@ -27,7 +27,8 @@ use Illuminate\Support\Facades\Session;
                                     <th>Profile Image</th>
                                     <th>Title</th>
                                     <th>Description</th>
-                                    <th>Url.</th>                                    
+                                    <th>Url.</th>
+                                    <th>Is Internal Post</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -42,6 +43,7 @@ use Illuminate\Support\Facades\Session;
                                         <td><?php echo e($s->title); ?></td>
                                         <td><?php echo e($s->description); ?></td>
                                         <td width='30px'><?php echo e($s->url); ?></td>
+                                        <td width='30px'><?php echo e($s->is_internal_post?'Yes':'No'); ?></td>
                                         <td>
                                             <?php if($s->active_status == 1): ?>
                                                 <label class="switch"><input type="checkbox" checked="" class="active-status-change" value="1" ads_id="<?php echo e($s->id); ?>"><span class="slider round"></span></label>

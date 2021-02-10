@@ -60,7 +60,7 @@ use Illuminate\Support\Facades\Session;
                                                         <strong style="color: red">{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-                                            </div>
+                                            </div>                                            
                                             <div class="form-group">
                                                 <label>Change Image</label>
                                                 <input type="file" class="form-control" name="image">
@@ -69,6 +69,16 @@ use Illuminate\Support\Facades\Session;
                                                     <strong style="color: red">{{ $message }}</strong>
                                                     </span>
                                                 @enderror
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Is Internal Post</label>
+                                                <label class="switch">
+                                                    @if($landing->is_internal_post)
+                                                        <input type="checkbox" checked name="is_internal_post" class="active-status-change" value="1"><span class="slider round"></span>
+                                                    @else
+                                                        <input type="checkbox" name="is_internal_post" class="active-status-change" value="1"><span class="slider round"></span>
+                                                    @endif                                                    
+                                                </label>
                                             </div>
                                         </div>
                                     </div>

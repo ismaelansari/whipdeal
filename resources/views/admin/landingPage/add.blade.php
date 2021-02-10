@@ -67,6 +67,12 @@ use Illuminate\Support\Facades\Session;
                                                     </span>
                                                 @enderror
                                             </div>
+                                            <div class="form-group">
+                                                <label>Is Internal Post</label>
+                                                <label class="switch">
+                                                    <input type="checkbox" name="is_internal_post" class="active-status-change"><span class="slider round"></span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12 col-xs-12 image-wrapper">
