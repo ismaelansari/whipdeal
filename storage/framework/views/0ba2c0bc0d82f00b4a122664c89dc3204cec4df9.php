@@ -28,9 +28,7 @@ use Illuminate\Support\Facades\Session;
                         <table id="laravel_datatable" class="table" >
                             <thead>
                                     <th>Profile Image</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Url.</th>
+                                    <th>Title</th>                                    
                                     <th>Position</th>
                                     <th>Is Internal Post</th>
                                     <th>Action</th>
@@ -42,9 +40,7 @@ use Illuminate\Support\Facades\Session;
                                 <?php $__currentLoopData = $sectionData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr row_id="<?php echo e($s->id); ?>">                                        
                                         <td><img src="<?php echo e($s->image); ?>" width="50px" height="50px"></td>
-                                        <td><?php echo e($s->title); ?></td>
-                                        <td><?php echo e($s->description); ?></td>
-                                        <td width='30px'><?php echo e($s->url); ?></td>
+                                        <td><?php echo e($s->title); ?></td>                                        
                                         <td><?php echo e($s->position); ?></td>
                                         <td width='30px'><?php echo e($s->is_internal_post?'Yes':'No'); ?></td>
                                         <td>

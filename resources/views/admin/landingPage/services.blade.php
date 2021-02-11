@@ -28,9 +28,7 @@ use Illuminate\Support\Facades\Session;
                         <table id="laravel_datatable" class="table" >
                             <thead>
                                     <th>Profile Image</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Url.</th>
+                                    <th>Title</th>                                    
                                     <th>Position</th>
                                     <th>Is Internal Post</th>
                                     <th>Action</th>
@@ -42,9 +40,7 @@ use Illuminate\Support\Facades\Session;
                                 @foreach($sectionData as $s)
                                     <tr row_id="{{$s->id}}">                                        
                                         <td><img src="{{$s->image}}" width="50px" height="50px"></td>
-                                        <td>{{$s->title}}</td>
-                                        <td>{{$s->description}}</td>
-                                        <td width='30px'>{{$s->url}}</td>
+                                        <td>{{$s->title}}</td>                                        
                                         <td>{{$s->position}}</td>
                                         <td width='30px'>{{$s->is_internal_post?'Yes':'No'}}</td>
                                         <td>

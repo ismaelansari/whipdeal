@@ -9,7 +9,9 @@ use DB;
 class LandingPageController extends Controller{
 
     public function index(){        
-        return view('admin.landingPage.index');
+        $sectionData    = LandingPage::where('section','online_ads')->orderBy('position','desc')->get();
+        $section        = 'online_Ads';        
+        return view('admin.landingPage.services',compact('sectionData','section'));
     }
 
     public function onlineMarketing(){
