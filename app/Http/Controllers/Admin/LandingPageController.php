@@ -13,7 +13,7 @@ class LandingPageController extends Controller{
     }
 
     public function onlineMarketing(){
-        $sectionData    = LandingPage::where('section','online_ads')->orderBy('id','desc')->get();
+        $sectionData    = LandingPage::where('section','online_ads')->orderBy('position','desc')->get();
         $section        = 'online_Ads';        
         return view('admin.landingPage.services',compact('sectionData','section'));
     }
@@ -105,12 +105,12 @@ class LandingPageController extends Controller{
 
     public function delete(Request $request){
         $input = $request->all();
+        
         $where = [
-            'section' => $input['section'],
-            'order'   => $input['order']
+            'id' => $input['id']
         ];
         DB::table('landing_pages')->where($where)->delete();
-        return redirect()->back()->with('status',true)->with('message','Deleted Successfully');
+        return ['status' => 'success' , 'message' => 'Ads deleted successfully']; 
      }
 
      public function activeStatusChange(Request $request){
@@ -126,9 +126,9 @@ class LandingPageController extends Controller{
         $User->active_status        = $change_status;
         if($User->update()){
             if($status==0){
-                return ['status' => 'success' , 'message' => 'User activated successfully', 'data'=>$User];
+                return ['status' => 'success' , 'message' => 'Ads activated successfully', 'data'=>$User];
             }else{
-                return ['status' => 'success' , 'message' => 'User deactivated successfully', 'data'=>$User]; 
+                return ['status' => 'success' , 'message' => 'Ads deactivated successfully', 'data'=>$User]; 
             }
         }else{
            return ['status' => 'failed' , 'message' => 'Status updated failed'];   
@@ -140,6 +140,16 @@ class LandingPageController extends Controller{
         $landing = LandingPage::where('id',$id)->first();
         $section        = 'online_edit_Ads';
         return view('admin.landingPage.edit',compact('landing', 'section'));
+    }
+
+    public function sortLink(Request $request){
+        $sort_arr = $request->data;
+        foreach ($sort_arr as $key => $s) {
+            LandingPage::where('id', $s)->update(['position' => ($key)]);
+        }
+        $res = array('status'=> true , 'message' => 'Ads sorted successufully!','data'=>array());
+        echo json_encode($res);
+        exit;
     }
 
 }

@@ -52,7 +52,9 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('admin/landing/page/store', 'Admin\LandingPageController@store')->name('landing.store');
   Route::get('admin/landing/page/edit/{id}', 'Admin\LandingPageController@edit')->name('landing.edit');
   Route::put('admin/landing/page/update', 'Admin\LandingPageController@update')->name('landing.update');
-  Route::get('admin/landing/page/delete', 'Admin\LandingPageController@delete')->name('landing.delete');
+  Route::post('delete_ads', 'Admin\LandingPageController@delete')->name('landing.delete');
+  Route::post('sort_link', 'Admin\LandingPageController@sortLink');
 
-  Route::put('admin/ads/active_status_change/', 'Admin\LandingPageController@activeStatusChange');
+  Route::put('admin/ads/active_status_change/', 'Admin\LandingPageController@activeStatusChange');  
+  
 });

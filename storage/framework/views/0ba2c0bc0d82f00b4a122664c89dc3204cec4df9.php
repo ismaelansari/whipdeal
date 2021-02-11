@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Session;
 ?>
 
 <?php $__env->startSection('content'); ?>
+<style type="text/css">
+.DragMe:Hover {
+    cursor: move;
+}
+</style>
 	<div class="main-body">
         <div class="inner-body">
             <div class="driver-data-table">
@@ -22,27 +27,25 @@ use Illuminate\Support\Facades\Session;
                     <div class="table-responsive">
                         <table id="laravel_datatable" class="table" >
                             <thead>
-                                <tr>
-                                    <th>Sr.No.</th>
                                     <th>Profile Image</th>
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Url.</th>
+                                    <th>Position</th>
                                     <th>Is Internal Post</th>
                                     <th>Action</th>
-                                </tr>
                             </thead>
                             <tbody>
                                 <?php
                                     $i = 0;
                                 ?>
                                 <?php $__currentLoopData = $sectionData; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <tr>
-                                        <td><?php echo e(++$i); ?></td>
+                                    <tr row_id="<?php echo e($s->id); ?>">                                        
                                         <td><img src="<?php echo e($s->image); ?>" width="50px" height="50px"></td>
                                         <td><?php echo e($s->title); ?></td>
                                         <td><?php echo e($s->description); ?></td>
                                         <td width='30px'><?php echo e($s->url); ?></td>
+                                        <td><?php echo e($s->position); ?></td>
                                         <td width='30px'><?php echo e($s->is_internal_post?'Yes':'No'); ?></td>
                                         <td>
                                             <?php if($s->active_status == 1): ?>
@@ -55,7 +58,7 @@ use Illuminate\Support\Facades\Session;
 
                                             <div class="btns"><a href="<?php echo e(url('admin/landing/page/edit/'.encrypt($s->id))); ?>"><button class="pen"><i class="fa fa-pencil"></i></button></a></div>
 
-                                            <div class="btns"><a href="http://dev.codemeg.com/fairride/admin/user/show/10"><button class="pen"><i class="fa fa-trash"></i></button></a></div>
+                                            <div class="btns" data_delete="<?php echo e($s->id); ?>"><button class="pen"><i class="fa fa-trash"></i></button></div>
                                         </td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -69,8 +72,14 @@ use Illuminate\Support\Facades\Session;
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('js'); ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
  <script>
-     $('#laravel_datatable').DataTable({});
+     $('#laravel_datatable').DataTable({
+        "order": [[ 4, "asc" ]]
+     });
+
+
         $('body').on('click','.active-status-change', function() {
         var ads_id = $(this).attr("ads_id");
         //status=$('.active-status-change').val();
@@ -112,6 +121,128 @@ use Illuminate\Support\Facades\Session;
             }
         });
     });
+
+$('[data_delete]').click(function(){
+    var ads_id = $(this).attr('data_delete');
+    swal({
+    title: "Are you sure?",
+    text: "You will not be able to recover this imaginary file!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes, I am sure!',
+    cancelButtonText: "No, cancel it!",
+    closeOnConfirm: false,
+    closeOnCancel: false
+ },
+ function(isConfirm){
+
+   if (isConfirm){
+        
+       $.ajax({
+            "headers":{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            },
+            'type':'Post',
+            'url' :  base_url + '/delete_ads',
+            'data' : {  id : ads_id },
+            'beforeSend': function() {
+
+            },
+            'success' : function(response){
+                if(response.status == 'success'){
+                    swal(response.status ,response.message, 'success')
+                    setTimeout(function(){
+                        window.location.reload();
+                    },1000);
+                }
+            },
+            'error' :  function(errors){
+                console.log(errors);
+            },
+            'complete': function() {
+
+            }
+        });  
+
+    } else {
+      swal("Cancelled", "Your record is safe :)", "error");
+    }
+ });
+
+});
+
+
+
+
+
+
+
+$(document).ready(function () {
+
+     $('tbody').addClass("DragMe");
+
+     $('.DragMe').sortable({
+         disabled: false,
+         axis: 'y',
+        // items: "> tr:not(:first)",
+         forceHelperSize: true,
+         update: function (event, ui) {
+             var Newpos = ui.item.index();
+             var RefID = $('tr').find('td:first').html();
+
+
+             //alert("Position " + Newpos + "..... RefID: " + RefID);
+             var sortorder = [];
+             $("#laravel_datatable tr").each(function () {
+                 var RefID = $(this).attr('row_id');//$(this).find("td:eq(0)").html();
+                 var NewPosition = $("tr").index(this);                 
+                 sortorder.push(RefID)
+                     console.log(RefID + " " + NewPosition);
+
+             });
+
+             doSortLink(sortorder);
+
+         }
+     }).disableSelection();
+ });
+
+
+
+
+function doSortLink(sortorder){
+  console.log('sortorder == ',sortorder);
+  $.ajax({
+        "headers":{
+        'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+           },
+        'type' : 'POST',
+        'url'   : base_url+'/sort_link', 
+        'data' : {data : sortorder },   
+        'beforeSend': function() {
+         // location.reload();
+        },
+        'success' : function(data){  
+          data = JSON.parse(data);
+          if(data.status == true){                                
+            notify('success',data.message); 
+          }else{
+            notify('error',data.message);
+          }      
+          console.log('data == ',data);
+        },
+        'error' :  function(errors){
+          console.log(errors);
+        },
+        'complete': function(response) {           
+        }
+       });
+}
+
+
+
+
  </script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/whipdeal/resources/views/admin/landingPage/services.blade.php ENDPATH**/ ?>
