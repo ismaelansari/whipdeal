@@ -152,4 +152,10 @@ class LandingPageController extends Controller{
         exit;
     }
 
+    public function getAdsDetails(Request $request){
+      $id = ($request->id);
+      $landing = LandingPage::where('id',$id)->first();
+      return ['status' => 'success' , 'message' => 'Ads details found successfully', 'data'=>$landing];
+    }
+
 }

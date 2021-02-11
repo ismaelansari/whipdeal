@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::put('admin/landing/page/update', 'Admin\LandingPageController@update')->name('landing.update');
   Route::post('delete_ads', 'Admin\LandingPageController@delete')->name('landing.delete');
   Route::post('sort_link', 'Admin\LandingPageController@sortLink');
+  Route::post('getAdsDetails', 'Admin\LandingPageController@getAdsDetails');
 
   Route::put('admin/ads/active_status_change/', 'Admin\LandingPageController@activeStatusChange');  
   

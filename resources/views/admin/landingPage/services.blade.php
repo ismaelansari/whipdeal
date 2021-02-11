@@ -54,7 +54,7 @@ use Illuminate\Support\Facades\Session;
                                                 <label class="switch"><input type="checkbox" class="active-status-change" value="0" ads_id="{{$s->id}}"><span class="slider round"></span></label>
                                             @endif
 
-                                            <div class="btns"><a href=""><button class="eye"><i class="fa fa-eye"></i></button></a></div>
+                                            <div class="btns" data_view="{{$s->id}}"><button class="eye"><i class="fa fa-eye"></i></button></div>
 
                                             <div class="btns"><a href="{{url('admin/landing/page/edit/'.encrypt($s->id))}}"><button class="pen"><i class="fa fa-pencil"></i></button></a></div>
 
@@ -69,6 +69,58 @@ use Illuminate\Support\Facades\Session;
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="details" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ads details</h4>
+        </div>
+        <div class="modal-body">
+          <table border="1" align="center"  class="table">
+            <tr>
+                <td>Ads Image</td>
+                <td ads_image></td>
+            </tr>
+            <tr>
+                <td>Title</td>
+                <td title></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td description></td>
+            </tr>
+            <tr>
+                <td>Url</td>
+                <td url></td>
+            </tr>
+            <tr>
+                <td>Is Internal Post</td>
+                <td is_internal_post></td>
+            </tr>
+            <tr>
+                <td>position</td>
+                <td position></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td status></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
 
 @endsection
 @push('js')
@@ -175,12 +227,66 @@ $('[data_delete]').click(function(){
 
 
 
+$('[data_view]').click(function(){
+    var ads_id =  $(this).attr('data_view');
+    $.ajax({
+            "headers":{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            },
+            'type':'Post',
+            'url' :  base_url + '/getAdsDetails',
+            'data' : {  id : ads_id },
+            'beforeSend': function() {
 
+            },
+            'success' : function(response){
+                if(response.status == 'success'){
+                    console.log(response);
+                    $('[title]').text('');
+                    $('[title]').text(response.data.title);
+                    
+                    $('[description]').text('');
+                    $('[description]').text(response.data.description);
+
+                    $('[url]').text('');
+                    $('[url]').text(response.data.url);
+
+                    $('[ads_image]').html('');
+                    $('[ads_image]').html('<img src="'+response.data.image+' " width="100px" height="100px">'); 
+
+                    $('[position]').html('');
+                    $('[position]').html(response.data.position);
+
+                    $('[status]').html('');
+                    if(response.data.active_status == 1){
+                        $('[status]').html("Active");
+                    }else{
+                        $('[status]').html("Deactivate");
+                    }
+
+                    $('[is_internal_post]').html('');
+                    if(response.data.is_internal_post == 1){
+                        $('[is_internal_post]').html("Yes");
+                    }else{
+                        $('[is_internal_post]').html("No");
+                    }                
+
+                    $('#details').modal('show');
+                }
+            },
+            'error' :  function(errors){
+                console.log(errors);
+            },
+            'complete': function() {
+
+            }
+        });  
+});
 
 
 $(document).ready(function () {
 
-     $('tbody').addClass("DragMe");
+     $('#laravel_datatable tbody').addClass("DragMe");
 
      $('.DragMe').sortable({
          disabled: false,
