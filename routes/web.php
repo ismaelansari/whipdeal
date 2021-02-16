@@ -45,7 +45,7 @@ Route::get('/home', 'HomeController@index')->name('home');
  * Landing page Route's
  */
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth','revalidate']], function () {
   Route::get('admin/landing/page/online/marketing', 'Admin\LandingPageController@onlineMarketing')->name('landing.onlineMarketing');
 
   Route::get('admin/landing/page/add', 'Admin\LandingPageController@create')->name('landing.create');

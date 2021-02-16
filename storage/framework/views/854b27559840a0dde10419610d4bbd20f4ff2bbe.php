@@ -14,12 +14,12 @@
 				<div class="navlink">
 					<ul>
 						<li class="parent">
-							<a class="<?php if((substr(strrchr(url()->current(),"/"),0)=='page')): ?><?php echo e('active'); ?><?php endif; ?>" href="javascript-void:(0)"><i class="fa fa-cubes"></i> <span>Services</span> </a>
+							<a class="<?php if((substr(strrchr(url()->current(),"/"),0)=='page')): ?><?php echo e('active'); ?><?php endif; ?>" href="javascript-void:(0)"><i class="fa fa-cubes"></i> <span>Advertisment portal</span> </a>
 							<ul class="submenu">
 								<li>
 									<a class="<?php if((substr(strrchr(url()->current(),"/"),0)=='page')): ?><?php echo e('active'); ?><?php endif; ?>" href="<?php echo e(route('landing.onlineMarketing')); ?>"> 
 										<i class="fa fa-bullhorn"></i>
-										<span>Online Ads</span>
+										<span>Ads listing</span>
 									</a>
 								</li>								
 							</ul>

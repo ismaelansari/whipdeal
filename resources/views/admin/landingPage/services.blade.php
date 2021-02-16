@@ -31,7 +31,10 @@ use Illuminate\Support\Facades\Session;
                                     <th>Title</th>                                    
                                     <th>Position</th>
                                     <th>Is Internal Post</th>
-                                    <th>Action</th>
+                                    <th>Status</th>
+                                    <th>View</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                             </thead>
                             <tbody>
                                 @php
@@ -49,11 +52,14 @@ use Illuminate\Support\Facades\Session;
                                             @else
                                                 <label class="switch"><input type="checkbox" class="active-status-change" value="0" ads_id="{{$s->id}}"><span class="slider round"></span></label>
                                             @endif
-
+                                            </td>
+                                            <td>
                                             <div class="btns" data_view="{{$s->id}}"><button class="eye"><i class="fa fa-eye"></i></button></div>
-
+                                            </td>
+                                            <td>
                                             <div class="btns"><a href="{{url('admin/landing/page/edit/'.encrypt($s->id))}}"><button class="pen"><i class="fa fa-pencil"></i></button></a></div>
-
+                                            </td>
+                                            <td>
                                             <div class="btns" data_delete="{{$s->id}}"><button class="pen"><i class="fa fa-trash"></i></button></div>
                                         </td>
                                     </tr>
@@ -124,7 +130,7 @@ use Illuminate\Support\Facades\Session;
 
  <script>
      $('#laravel_datatable').DataTable({
-        "order": [[ 4, "asc" ]]
+        "order": [[ 2, "asc" ]]
      });
 
 

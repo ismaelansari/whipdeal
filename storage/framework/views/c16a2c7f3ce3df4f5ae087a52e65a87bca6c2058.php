@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="<?php echo e(asset('public/frontend')); ?>/images/favicon.ico" type="image/x-icon">
     <script type="text/javascript">    
       if(localStorage.getItem("credential_name") && localStorage.getItem("credential_email")){
-        window.location.href= "<?php echo e(url('steps')); ?>";
+        //window.location.href= "<?php echo e(url('steps')); ?>";
       }
     </script>
 </head><?php /**PATH /var/www/html/whipdeal/resources/views/landing/layouts/head.blade.php ENDPATH**/ ?>

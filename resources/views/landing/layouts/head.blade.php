@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="{{asset('public/frontend')}}/images/favicon.ico" type="image/x-icon">
     <script type="text/javascript">    
       if(localStorage.getItem("credential_name") && localStorage.getItem("credential_email")){
-        window.location.href= "{{url('steps')}}";
+        //window.location.href= "{{url('steps')}}";
       }
     </script>
 </head>
