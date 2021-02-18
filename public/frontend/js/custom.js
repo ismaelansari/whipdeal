@@ -13,23 +13,7 @@ $(document).ready(function(){
     });
 });
 /**************/
-/**loader javascript**/
 
-    var preloader = $('#loader-wrapper');
-    var myVar;
-
-    function aakashloader(){
-        preloader.css("transition", "all 0.5s");
-        preloader.css("visibility", "hidden");
-        preloader.css("opacity", "0");
-        window.scrollTo(0, 0);
-    };
-
-    function loaderfun() {
-        myVar = setTimeout(aakashloader, 800);
-    }
-
-/****end****/
 
 $(document).ready(function (){
     $('.noti-btn, .n-overlay').click(function (){
