@@ -219,6 +219,9 @@ p {
     object-fit: cover
 }
 </style>
+@php
+    $ads_count = $data['ads'];
+@endphp
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
@@ -228,10 +231,21 @@ p {
                 <form id="msform">
                     <!-- progressbar -->
                     <ul id="progressbar">
-                        <li class="active" id="account"><strong>Account</strong></li>
-                        <li id="personal"><strong>Personal</strong></li>
-                        <li id="payment"><strong>Image</strong></li>
-                        <li id="confirm"><strong>Finish</strong></li>
+                        @if(!empty($ads_count))
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach($ads_count as $ad)
+                                @if($i == 1)
+                                    <li class="active" id="{{$i}}"><strong>{{$i}}</strong></li>
+                                @else
+                                    <li id="{{$i}}"><strong>{{$i}}</strong></li>
+                                @endif     
+                                @php
+                                    $i++;
+                                @endphp                           
+                            @endforeach
+                        @endif
                     </ul>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
@@ -243,9 +257,14 @@ p {
                                     <h2 class="fs-title">Account Information:</h2>
                                 </div>
                                 <div class="col-5">
-                                    <h2 class="steps">Step 1 - 4</h2>
+                                    @if(!empty($ads_count))
+                                        <h2 class="steps">Step 1 - {{count($ads_count)}}</h2>
+                                    @endif
                                 </div>
-                            </div> <label class="fieldlabels">Email: *</label> <input type="email" name="email" placeholder="Email Id" /> <label class="fieldlabels">Username: *</label> <input type="text" name="uname" placeholder="UserName" /> <label class="fieldlabels">Password: *</label> <input type="password" name="pwd" placeholder="Password" /> <label class="fieldlabels">Confirm Password: *</label> <input type="password" name="cpwd" placeholder="Confirm Password" />
+                            </div> 
+                            <label>                                
+                            </label>
+                            <input type="password" name="cpwd" placeholder="Confirm Password" />
                         </div> <input type="button" name="next" class="next action-button" value="Next" />
                     </fieldset>
                     <fieldset>

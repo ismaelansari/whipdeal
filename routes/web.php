@@ -17,10 +17,7 @@ use Illuminate\Http\Request;
       return view('landing.index',compact('data'));
     })->name('index');
 
-    Route::get('ads',function(){          
-      $data['js'] = array('step.js');
-      return view('landing.ads',compact('data'));
-    })->name('ads');
+    Route::get('/ads', 'HomeController@ads')->name('ads');
 
     Route::post('/send/mail',function(Request $request){
         $data = array(
