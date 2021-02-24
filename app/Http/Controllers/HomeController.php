@@ -31,11 +31,6 @@ class HomeController extends Controller
     public function ads(Request $request)
     {        
         $ads = LandingPage::where('active_status',1)->orderBy('position','asc')->get();        
-        if(!empty($ads)){
-            foreach ($ads as $key => $ad) {                
-                $ad->image = ImageHelper::getServiceImage($ad->image);
-            }
-        }
         $data['js'] = array('step.js');
         $data['ads'] = $ads;
         return view('landing.ads',compact('data'));
