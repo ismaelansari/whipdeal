@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    if(localStorage.getItem('is_compleate') == '1'){
+        window.location.href = base_url+"/new-for-you";
+    }
+
     var current_fs, next_fs, previous_fs; //fieldsets
     var opacity;
     var current = 1;
@@ -12,7 +16,7 @@ $(document).ready(function() {
         next_fs = $(this).parent().next();
         console.log($(this).val())
         if($(this).val() == 'Yes'){
-          sendRequest($(this).attr('data_internal'),current,steps);
+          sendRequest($(this).attr('data_internal'),current,steps,$(this).attr('data_link'));
         }
         //Add Class Active
         $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
@@ -88,9 +92,61 @@ $(document).ready(function() {
 
 });
 
-function sendRequest(is_internal,current,steps){
-  console.log(is_internal);
-  if(current == steps){
-          //window.location.href = base_url;
-        }
+function sendRequest(is_internal,current,steps,data_link){
+  
+  if(data_link.indexOf('{name}') != -1){
+        var data_link = data_link.replace('{name}', localStorage.getItem('name'));
+    }
+
+    if(data_link.indexOf('{email}') != -1){
+        var data_link = data_link.replace('{email}', localStorage.getItem('email'));
+    }
+    if(is_internal == 0){
+        saveLinkData(data_link);
+        window.open(data_link,'_blank');
+    }else{
+        saveLinkData(data_link);
+        sendLinkData(data_link);
+        console.log(is_internal,data_link);
+    }
+    
+    if(current == steps){
+        localStorage.setItem('is_compleate','1');
+    }
+}
+
+function saveLinkData(data_link){
+    $.ajax({
+            "headers": {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: "POST",
+            url: base_url + '/save_link',
+            data: {
+                user_id: localStorage.getItem('user_id'),
+                linkdata: data_link
+            }
+        })
+        .done(function(msg) {
+            msg = JSON.parse(msg);
+            console.log(msg);
+        });
+}
+
+function sendLinkData(data_link){
+    $.ajax({
+            "headers": {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: "POST",
+            url: base_url + '/send_linkdata',
+            data: {
+                user_id: localStorage.getItem('user_id'),
+                linkdata: data_link
+            }
+        })
+        .done(function(msg) {
+            msg = JSON.parse(msg);
+            console.log(msg);
+        });
 }

@@ -19,6 +19,11 @@ use Illuminate\Http\Request;
 
     Route::get('/ads', 'HomeController@ads')->name('ads');
 
+    Route::post('/register_user_data', 'HomeController@registerUserData')->name('register_user_data');
+    Route::post('/save_link', 'HomeController@saveLink')->name('save_link');
+    Route::post('/send_linkdata', 'HomeController@sendLinkData')->name('send_linkdata');
+    Route::get('/new-for-you', 'HomeController@newForYou')->name('new-for-you');  
+
     Route::post('/send/mail',function(Request $request){
         $data = array(
           'to'      => 'ismael.codemegsoft@gmail.com',
