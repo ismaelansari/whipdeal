@@ -12,6 +12,6 @@ class SaveLinkData extends Model
      */
     protected $table = 'save_link_data';
     protected $fillable = [
-        'user_id','link'
+        'user_id','link','ads_id'
     ];
 }

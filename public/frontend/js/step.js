@@ -16,7 +16,7 @@ $(document).ready(function() {
         next_fs = $(this).parent().next();
         console.log($(this).val())
         if($(this).val() == 'Yes'){
-          sendRequest($(this).attr('data_internal'),current,steps,$(this).attr('data_link'));
+          sendRequest($(this).attr('data_internal'),current,steps,$(this).attr('data_link'),$(this).attr('data_id'));
         }
         //Add Class Active
         $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
 });
 
-function sendRequest(is_internal,current,steps,data_link){
+function sendRequest(is_internal,current,steps,data_link,ads_id){
   
   if(data_link.indexOf('{name}') != -1){
         var data_link = data_link.replace('{name}', localStorage.getItem('name'));
@@ -102,10 +102,10 @@ function sendRequest(is_internal,current,steps,data_link){
         var data_link = data_link.replace('{email}', localStorage.getItem('email'));
     }
     if(is_internal == 0){
-        saveLinkData(data_link);
+        saveLinkData(data_link,ads_id);
         window.open(data_link,'_blank');
     }else{
-        saveLinkData(data_link);
+        saveLinkData(data_link,ads_id);
         sendLinkData(data_link);
         console.log(is_internal,data_link);
     }
@@ -115,7 +115,7 @@ function sendRequest(is_internal,current,steps,data_link){
     }
 }
 
-function saveLinkData(data_link){
+function saveLinkData(data_link,ads_id){
     $.ajax({
             "headers": {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -124,7 +124,8 @@ function saveLinkData(data_link){
             url: base_url + '/save_link',
             data: {
                 user_id: localStorage.getItem('user_id'),
-                linkdata: data_link
+                linkdata: data_link,
+                ads_id: ads_id
             }
         })
         .done(function(msg) {

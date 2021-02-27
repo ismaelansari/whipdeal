@@ -270,7 +270,7 @@ p {
                                     </div> 
                                     <label>                                
                                     </label>                                    
-                                </div> <input type="button" data_link="{{$ad->url}}" data_internal="{{$ad->is_internal_post}}" name="yes" class="next action-button" value="Yes" />
+                                </div> <input type="button" data_link="{{$ad->url}}" data_internal="{{$ad->is_internal_post}}" data_id="{{$ad->id}}" name="yes" class="next action-button" value="Yes" />
                                 <input type="button" name="no" data_internal="" class="next action-button" value="NO" />
                             </fieldset>         
                             @php

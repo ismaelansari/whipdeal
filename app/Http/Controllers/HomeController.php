@@ -52,6 +52,7 @@ class HomeController extends Controller
         $SaveLinkData = new SaveLinkData;
         $SaveLinkData->user_id = $inputs['user_id'];
         $SaveLinkData->link = $inputs['linkdata'];
+        $SaveLinkData->ads_id = $inputs['ads_id'];        
         if($SaveLinkData->save()){            
             return json_encode(array('message'=>'data saved successfully','id'=>$SaveLinkData->id));
         }
