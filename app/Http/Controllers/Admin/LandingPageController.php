@@ -26,7 +26,7 @@ class LandingPageController extends Controller{
             'title'       => 'required',
             'description'        => 'required',
             'url'               => 'required',
-            //'image'           => 'required',
+              //'image'           => 'required',
         ];
         $this->validate($request,$rules);
 
@@ -66,7 +66,7 @@ class LandingPageController extends Controller{
             'title'       => 'required',
             'description'        => 'required',
             'url'               => 'required',
-            //'image'           => 'required',
+            'image'           => 'required',
         ];
         $this->validate($request,$rules);
        unset($input['_method']);
@@ -94,6 +94,8 @@ class LandingPageController extends Controller{
                 ]);
             }
         }
+        $landing = LandingPage::orderBy('position','desc')->limit('1')->first();
+        $input['position'] = $landing->position + 1;
         $input['is_internal_post'] =  $request->is_internal_post?'1':'0';
        DB::table('landing_pages')->insert($input);
        return redirect()->back()->with('status',true)->with('message','Added Successfully');

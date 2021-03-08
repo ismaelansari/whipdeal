@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Session;
 				<!--start-->
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="add-driver clear-col portfolio-bg">
-                            <form method="POST" enctype="multipart/form-data" action="{{ route('landing.store') }}">
+                            <form method="POST" name="add_post" enctype="multipart/form-data" action="{{ route('landing.store') }}">
                                 @csrf
                                 <input type="hidden" name="section" value="{{$section}}" />
                                 <div class="row">
@@ -101,6 +101,13 @@ use Illuminate\Support\Facades\Session;
                 var imagePreview = '';
                     imagePreview = '<img src="'+tmppath+'" width="400"/>';
                     $(this).parents('.image-wrapper').find('.image-preview').html(imagePreview);
-        });
+        });          
+
+        $('.same-btn1').click(function(){
+            if($('[name="title"]').val() != "" && $('[name="description"]').val() != "" &&  $('[name="url"]').val() != "" && $('[name="image"]').val() != ""){
+                $('[name="add_post"]')[0].submit();
+                $(this).attr('disabled','disabled');
+            }            
+        })
  </script>
 @endpush

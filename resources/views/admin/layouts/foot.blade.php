@@ -1,11 +1,12 @@
 
 <script type="text/javascript" src="{{asset('public/admin_assets')}}/js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="{{asset('public/admin_assets')}}/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 <!--data table-->
 {{-- <script type="text/javascript" src="{{asset('public/admin_assets')}}/js/dataTables.bootstrap.js"></script>
 <script type="text/javascript" src="{{asset('public/admin_assets')}}/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="{{asset('public/admin_assets')}}/js/custom.js"></script> --}}
-{{-- Added by ganesh --}}
+
 {{-- <script type="text/javascript" src="{{asset('public/admin_assets/admin_js')}}/profile.js"></script> --}}
 <script type="text/javascript">
 	window.setTimeout(function() {

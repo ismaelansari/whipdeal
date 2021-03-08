@@ -1,6 +1,7 @@
 
 <script type="text/javascript" src="<?php echo e(asset('public/admin_assets')); ?>/js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="<?php echo e(asset('public/admin_assets')); ?>/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 <!--data table-->
 
 
